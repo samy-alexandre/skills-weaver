@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: skills-weaver
+    runtime: python
+    buildCommand: |
+      pip install -r requirements.txt
+      playwright install chromium
+    startCommand: gunicorn app:app
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
